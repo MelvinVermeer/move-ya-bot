@@ -28,7 +28,11 @@ app.post('/move', async (req, res) => {
   } else {
     console.log(req.body)
   
-    sendMessageToUrl(req.body.response_url, { text: "Do 6 push ups", response_type: 'in_channel' })
+    sendMessageToUrl(req.body.response_url, { 
+      icon_emoji: ":robot_face:",
+      text: "Do 6 push ups", 
+      response_type: 'in_channel'
+    })
 
     res.json({ 
       response_type: 'ephemeral',
