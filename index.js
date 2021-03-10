@@ -29,7 +29,6 @@ app.post('/move', async (req, res) => {
     console.log(req.body)
   
     sendMessageToUrl(req.body.response_url, { 
-      icon_emoji: ":robot_face:",
       text: "Do 6 push ups", 
       response_type: 'in_channel'
     })
@@ -44,6 +43,7 @@ app.post('/move', async (req, res) => {
 app.get("/status", (_, res) => {
   res.send("ok");
 });
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
@@ -51,11 +51,10 @@ app.listen(port, () => {
 bot.on("error", (err) => {
   console.log(err);
 });
+
 bot.on("message", (data) => {
   if (data.type === "message" && data.text.includes(bot.self.id)) {
-    bot.postMessage(data.channel, "Do 5 push ups", {
-      icon_emoji: ":robot_face:",
-    });
+    bot.postMessage(data.channel, "Do 5 push ups");
     console.log(JSON.stringify(data, null, 2));
   }
 });
