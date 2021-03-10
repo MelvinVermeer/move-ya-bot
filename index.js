@@ -8,6 +8,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+const bot = new SlackBot({
+  token: `${process.env.BOT_TOKEN}`,
+  name: "move-ya-bot",
+});
+
 //app.use(bodyParser.urlencoded({ extended: true }))
 const rawBodyBuffer = (req, res, buf, encoding) => {
   if (buf && buf.length)  req.rawBody = buf.toString(encoding || 'utf8');
@@ -21,10 +26,11 @@ app.post('/move', async (req, res) => {
     res.sendStatus(404);     
     return;
   } else {
-    console.log(req.body.text)
+    console.log(req.body)
+    
     res.json({ 
-      response_type: 'in_channel',
-      text: "hi",
+      response_type: 'ephemeral',
+      text: "thanks for the motivaiton",
     });
   }
 });
