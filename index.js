@@ -5,6 +5,11 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.post("/move", (req, res) => {
+  console.log("MOVE");
+  console.log(JSON.stringify(req, null, 2));
+  res.send("ok");
+});
 app.get("/status", (_, res) => {
   res.send("ok");
 });
