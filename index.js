@@ -2,6 +2,7 @@ const express = require("express");
 const SlackBot = require("slackbots");
 const bodyParser = require('body-parser');
 const signature = require('./verifySignature');
+const sendMessageToUrl = require("./sendMessageToUrl")
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -27,6 +28,8 @@ app.post('/move', async (req, res) => {
     return;
   } else {
     console.log(req.body)
+  
+    sendMessageToUrl(req.body.response_url, { text: "Do 6 push ups" })
 
     res.json({ 
       response_type: 'ephemeral',
