@@ -8,6 +8,8 @@ const port = process.env.PORT || 3000;
 app.post("/move", (req, res) => {
   console.log("MOVE");
   console.log(JSON.stringify(req.body, null, 2));
+  console.log(JSON.stringify(req.headers, null, 2));
+  console.log(JSON.stringify(req.params, null, 2));
   res.send("ok");
 });
 app.get("/status", (_, res) => {
