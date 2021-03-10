@@ -27,7 +27,7 @@ app.post('/move', async (req, res) => {
     return;
   } else {
     console.log(req.body)
-    
+
     res.json({ 
       response_type: 'ephemeral',
       text: "thanks for the motivaiton",
@@ -42,10 +42,6 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
-const bot = new SlackBot({
-  token: `${process.env.BOT_TOKEN}`,
-  name: "move-ya-bot",
-});
 bot.on("error", (err) => {
   console.log(err);
 });
