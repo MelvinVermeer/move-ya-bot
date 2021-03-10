@@ -14,8 +14,7 @@ const bot = new SlackBot({
   name: "move-ya-bot",
 });
 
-//app.use(bodyParser.urlencoded({ extended: true }))
-const rawBodyBuffer = (req, res, buf, encoding) => {
+const rawBodyBuffer = (req, _res, buf, encoding) => {
   if (buf && buf.length)  req.rawBody = buf.toString(encoding || 'utf8');
 };
 
@@ -29,7 +28,7 @@ app.post('/move', async (req, res) => {
   } else {
     console.log(req.body)
   
-    sendMessageToUrl(req.body.response_url, { text: "Do 6 push ups" })
+    sendMessageToUrl(req.body.response_url, { text: "Do 6 push ups", response_type: 'in_channel' })
 
     res.json({ 
       response_type: 'ephemeral',
